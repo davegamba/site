@@ -23,19 +23,12 @@ export default function Category({
         </header>
       </section>
       <div className="columns">
-        {nodes.map(({ id, cover, slug, date, title, excerpt, published }) => (
+        {nodes.map(node => (
           <div
             className={classNames("column", "is-one-third")}
-            key={`article-${id}`}
+            key={`article-${node.id}`}
           >
-            <ArticleCell
-              cover={cover}
-              slug={slug}
-              date={date}
-              title={title}
-              excerpt={excerpt}
-              published={published}
-            />
+            <ArticleCell node={node} />
           </div>
         ))}
       </div>
