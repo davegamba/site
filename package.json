@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "blog",
+  "name": "site",
   "author": "Lucio Benini <info@pittica.com> (https://www.pittica.com)",
   "license": "0BSD",
   "scripts": {

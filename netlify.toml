@@ -1,0 +1,16 @@
+[build]
+command = "npm run build"
+publish = "public/"
+
+[[plugins]]
+package = "@netlify/plugin-gatsby"
+
+[[headers]]
+  for = "/page-data/*"
+  [headers.values]
+    Cache-Control = "max-age=0, no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "max-age=0, no-cache, no-store, must-revalidate"

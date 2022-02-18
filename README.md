@@ -1,7 +1,7 @@
 # davegamba/blog
 
-![GitHub](https://img.shields.io/github/license/davegamba/blog)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/davegamba/blog/gatsby)
+![GitHub](https://img.shields.io/github/license/davegamba/site)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/davegamba/site/gatsby)
 
 ## Features
 
