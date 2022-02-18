@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+@import "variables";
+@import "fonts";
+
+@import "~bulma/bulma.sass";
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  cursor: default;
+  font-family: $family-secondary;
+}
+.image {
+  width: 100%;
+  margin: auto;
+  &.is-square {
+    padding-top: 0;
+  }
+}

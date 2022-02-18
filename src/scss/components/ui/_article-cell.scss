@@ -1,0 +1,46 @@
+@import "../../variables";
+
+.article-cell {
+  border: 1px solid $primary;
+  small {
+    display: block;
+  }
+  h2 {
+    &.title {
+      padding: $size-7;
+      line-height: $size-3;
+      text-transform: uppercase;
+      font-size: $size-4;
+      text-align: center;
+      margin-bottom: $size-7;
+    }
+  }
+  header {
+    .meta {
+      padding: $size-7;
+      font-size: $size-7;
+      .catlist {
+        li {
+          display: inline-block;
+          a {
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+  }
+  .excerpt {
+    background-color: $primary;
+    color: $primary-invert;
+    padding: $size-7;
+    a {
+      color: $primary-invert;
+    }
+  }
+  &:hover {
+    border-color: $secondary;
+    .excerpt {
+      background-color: $secondary;
+    }
+  }
+}

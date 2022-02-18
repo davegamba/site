@@ -1,0 +1,62 @@
+@import "../variables";
+
+.article {
+  .hero {
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center top;
+    margin-bottom: $size-1;
+    .hero-body {
+      background-color: rgba($primary-invert, 0.75);
+      .has-text-centered {
+        width: 100%;
+        .title {
+          padding: $size-7;
+          display: inline-block;
+        }
+        .meta {
+          padding: $size-7;
+          font-weight: $weight-bold;
+        }
+      }
+    }
+    .hero-foot {
+      background-color: rgba($primary-invert, 0.75);
+      .tabs {
+        &.is-boxed {
+          a {
+            font-weight: $weight-bold;
+            text-transform: uppercase;
+            padding-bottom: 0;
+            span {
+              background-color: $primary-invert;
+              border-bottom: 3px solid $secondary;
+              padding: $size-7;
+            }
+            &:hover {
+              background: none;
+              span {
+                background-color: $secondary;
+                color: $primary-invert;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .authors {
+    margin-top: $size-1;
+    h2 {
+      &.title {
+        text-transform: uppercase;
+      }
+    }
+    .card {
+      .title {
+        color: $grey-darker;
+        font-size: $size-4;
+      }
+    }
+  }
+}

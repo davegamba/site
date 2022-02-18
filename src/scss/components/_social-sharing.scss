@@ -1,0 +1,37 @@
+@import "../variables";
+
+@import "~bulma/sass/utilities/mixins";
+
+.social-sharing {
+  position: fixed;
+  z-index: 9998;
+  right: 0;
+  top: 40%;
+  text-align: center;
+  @include touch {
+    top: auto;
+    bottom: 0;
+    right: auto;
+    left: 0;
+    width: 100%;
+  }
+  .share-button {
+    display: block;
+    width: $size-2;
+    height: $size-2;
+    background-color: $primary;
+    color: $primary-invert;
+    @include touch {
+      display: inline-block;
+    }
+    .icon {
+      background-color: $primary;
+      color: $primary-invert;
+      height: 100%;
+      width: 100%;
+      &:hover {
+        background-color: $info;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import "../../variables";
+
+.section-button {
+  display: inline-block;
+  height: auto;
+  font-family: $family-secondary;
+  &.is-large {
+    font-size: $size-3;
+  }
+  small {
+    display: block;
+    font-family: $family-primary;
+    font-size: $size-6;
+  }
+}
