@@ -26,7 +26,7 @@ export default function Category({
         {nodes.map(node => (
           <div
             className={classNames("column", "is-one-third")}
-            key={`article-${node.id}`}
+            key={`category-${node.id}`}
           >
             <ArticleCell node={node} />
           </div>
