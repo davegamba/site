@@ -168,7 +168,13 @@ export const pageQuery = graphql`
           }
         }
       }
+      keywords
       categories {
+        id
+        name
+        slug
+      }
+      tags {
         id
         name
         slug
