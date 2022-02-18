@@ -62,7 +62,7 @@ export default function Article({
           </div>
           {categories && categories.length > 0 && (
             <div className="hero-foot">
-              <nav className={classNames("tabs", "is-boxed", "is-fullwidth")}>
+              <nav className={classNames("tabs", "is-boxed")}>
                 <div className="container">
                   <ul>
                     {categories.map(category => (
@@ -93,7 +93,9 @@ export default function Article({
       {authors && authors.length > 0 && (
         <div className="container">
           <section className={classNames("section", "authors")}>
-            <h2 className="title">Autori</h2>
+            <h2 className="title">
+              {authors.length > 1 ? "Autori" : "Autore"}
+            </h2>
             <div className={classNames("columns", "is-multiline")}>
               {authors.map(author => {
                 const to = `/authors/${author.slug}`
@@ -150,8 +152,18 @@ export default function Article({
 }
 
 export const pageQuery = graphql`
-  query BlogTemplate($id: String!, $next: String, $previous: String) {
-    page: graphCmsArticle(stage: { eq: PUBLISHED }, id: { eq: $id }) {
+  query BlogTemplate(
+    $id: String!
+    $locale: GraphCMS_Locale
+    $stage: GraphCMS_Stage
+    $next: String
+    $previous: String
+  ) {
+    page: graphCmsArticle(
+      stage: { eq: $stage }
+      id: { eq: $id }
+      locale: { eq: $locale }
+    ) {
       id
       excerpt
       slug
@@ -194,7 +206,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    next: graphCmsArticle(stage: { eq: PUBLISHED }, id: { eq: $next }) {
+    next: graphCmsArticle(
+      stage: { eq: $stage }
+      locale: { eq: $locale }
+      id: { eq: $next }
+    ) {
       slug
       title
       cover {
@@ -205,7 +221,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    previous: graphCmsArticle(stage: { eq: PUBLISHED }, id: { eq: $previous }) {
+    previous: graphCmsArticle(
+      stage: { eq: $stage }
+      locale: { eq: $locale }
+      id: { eq: $previous }
+    ) {
       slug
       title
       cover {

@@ -31,6 +31,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
               slug
               updatedAt
               locale
+              stage
             }
             next {
               id
@@ -48,6 +49,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
           nodes {
             id
             slug
+            stage
           }
           fieldValue
           totalCount
@@ -58,6 +60,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
           nodes {
             id
             slug
+            stage
           }
           fieldValue
           totalCount
@@ -112,7 +115,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
 
   articles.posts.forEach(({ edges, totalCount, fieldValue }) => {
     edges.forEach(
-      ({ node: { id, slug, updatedAt, locale }, previous, next }) => {
+      ({ node: { id, slug, updatedAt, locale, stage }, previous, next }) => {
         createPage({
           path: `/${slug}`,
           component: path.resolve(`./src/templates/article.jsx`),
@@ -123,6 +126,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
             previous: previous ? previous.id : null,
             updatedAt,
             locale,
+            stage,
           },
         })
       }
@@ -132,19 +136,21 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   })
 
   categories.posts.forEach(({ nodes, fieldValue, totalCount }) =>
-    nodes.forEach(({ id, slug }) =>
+    nodes.forEach(({ id, slug, stage }) =>
       listify(totalCount, fieldValue, `categories/${slug}`, "category", {
         id,
         slug,
+        stage,
       })
     )
   )
 
   tags.posts.forEach(({ nodes, fieldValue, totalCount }) =>
-    nodes.forEach(({ id, slug }) =>
+    nodes.forEach(({ id, slug, stage }) =>
       listify(totalCount, fieldValue, `tags/${slug}`, "tag", {
         id,
         slug,
+        stage,
       })
     )
   )

@@ -43,8 +43,13 @@ export const pageQuery = graphql`
     $skip: Int!
     $limit: Int!
     $locale: GraphCMS_Locale
+    $stage: GraphCMS_Stage
   ) {
-    category: graphCmsCategory(stage: { eq: PUBLISHED }, id: { eq: $id }) {
+    category: graphCmsCategory(
+      stage: { eq: $stage }
+      id: { eq: $id }
+      locale: { eq: $locale }
+    ) {
       id
       name
     }
@@ -52,7 +57,7 @@ export const pageQuery = graphql`
       limit: $limit
       skip: $skip
       filter: {
-        stage: { eq: PUBLISHED }
+        stage: { eq: $stage }
         locale: { eq: $locale }
         categories: { elemMatch: { id: { eq: $id } } }
       }
