@@ -8,7 +8,7 @@ import ArticleCell from "../components/ui/article-cell"
 
 export default function Category({
   data: {
-    category: { name },
+    tag: { name },
     articles: { nodes },
   },
   location,
