@@ -1,7 +1,7 @@
 @import "../../variables";
 
 .article-cell {
-  border: 1px solid $primary;
+  background-color: $primary-invert;
   small {
     display: block;
   }
@@ -16,6 +16,13 @@
     }
   }
   header {
+    .wrapper {
+      overflow: hidden;
+      display: block;
+    }
+    .gatsby-image-wrapper {
+      transition: transform 0.2s;
+    }
     .meta {
       padding: $size-7;
       font-size: $size-7;
@@ -38,9 +45,10 @@
     }
   }
   &:hover {
-    border-color: $secondary;
-    .excerpt {
-      background-color: $secondary;
+    header {
+      .gatsby-image-wrapper {
+        transform: scale(1.2);
+      }
     }
   }
 }

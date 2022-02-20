@@ -4,6 +4,7 @@
   display: inline-block;
   height: auto;
   font-family: $family-secondary;
+  white-space: break-spaces;
   &.is-large {
     font-size: $size-3;
   }

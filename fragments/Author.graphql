@@ -9,6 +9,7 @@ fragment Author on Author {
   lastName
   slug
   title
+  email
   createdBy {
     ... on User {
       remoteTypeName: __typename

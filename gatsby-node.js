@@ -93,6 +93,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
           pages: length,
           current: i + 1,
           locale,
+          group,
           ...params,
         },
       })

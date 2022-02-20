@@ -2,9 +2,9 @@ import React from "react"
 import classNames from "classnames"
 import { graphql } from "gatsby"
 import { Seo } from "@pittica/gatsby-plugin-seo"
-import { Pagination } from "@pittica/gatsby-plugin-navigation"
 
 import ArticleCell from "../components/ui/article-cell"
+import ListPagination from "../components/ui/list-pagination"
 
 export default function Category({
   data: {
@@ -22,7 +22,7 @@ export default function Category({
           <h1 className="title">{name}</h1>
         </header>
       </section>
-      <div className="columns">
+      <div className={classNames("columns", "is-multiline")}>
         {nodes.map(node => (
           <div
             className={classNames("column", "is-one-third")}
@@ -32,7 +32,7 @@ export default function Category({
           </div>
         ))}
       </div>
-      <Pagination context={pageContext} />
+      <ListPagination context={pageContext} />
     </div>
   )
 }
@@ -68,7 +68,7 @@ export const pageQuery = graphql`
         cover {
           localFile {
             childImageSharp {
-              gatsbyImageData(width: 640, height: 640)
+              gatsbyImageData(width: 800, height: 800)
             }
           }
         }

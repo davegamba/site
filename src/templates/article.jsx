@@ -1,13 +1,15 @@
 import React from "react"
 import classNames from "classnames"
 import { graphql, Link } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 import { Seo } from "@pittica/gatsby-plugin-seo"
 
 import SocialSharing from "../components/social-sharing"
+import ArticleNavigation from "../components/ui/article-navigation"
 import Icon from "../components/ui/icon"
 
 import "../scss/templates/_article.scss"
+import ArticleAuthors from "../components/ui/article-authors"
 
 export default function Article({
   data: {
@@ -90,62 +92,8 @@ export default function Article({
           ></div>
         </div>
       )}
-      {authors && authors.length > 0 && (
-        <div className="container">
-          <section className={classNames("section", "authors")}>
-            <h2 className="title">
-              {authors.length > 1 ? "Autori" : "Autore"}
-            </h2>
-            <div className={classNames("columns", "is-multiline")}>
-              {authors.map(author => {
-                const to = `/authors/${author.slug}`
-                const name = `${author.firstName} ${author.lastName}`
-
-                return (
-                  <div
-                    className={classNames("column", "is-one-third")}
-                    key={`author-${author.id}`}
-                  >
-                    <div className="card">
-                      <div className="card-content">
-                        <div className="media">
-                          {author.image && author.image.localFile && (
-                            <div className="media-left">
-                              <Link to={to} title={name}>
-                                <GatsbyImage
-                                  image={getImage(
-                                    author.image.localFile.childImageSharp
-                                  )}
-                                  alt={name}
-                                  className={classNames("image", "is-96x96")}
-                                />
-                              </Link>
-                            </div>
-                          )}
-                          <div className="media-content">
-                            <p className="title">
-                              <Link to={to} title={name}>
-                                {name}
-                              </Link>
-                            </p>
-                            {title && (
-                              <p className="subtitle">
-                                <Link to={to} title={name}>
-                                  {author.title}
-                                </Link>
-                              </p>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </section>
-        </div>
-      )}
+      <ArticleNavigation next={next} previous={previous} />
+      <ArticleAuthors nodes={authors} />
       <SocialSharing location={location} title={title} />
     </article>
   )
@@ -216,7 +164,7 @@ export const pageQuery = graphql`
       cover {
         localFile {
           childImageSharp {
-            gatsbyImageData(width: 640, height: 440, placeholder: BLURRED)
+            gatsbyImageData(width: 800, height: 800, placeholder: BLURRED)
           }
         }
       }
@@ -231,7 +179,7 @@ export const pageQuery = graphql`
       cover {
         localFile {
           childImageSharp {
-            gatsbyImageData(width: 640, height: 440, placeholder: BLURRED)
+            gatsbyImageData(width: 800, height: 800, placeholder: BLURRED)
           }
         }
       }

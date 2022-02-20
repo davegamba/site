@@ -67,6 +67,7 @@ fragment Section on Section {
       stage
     }
   }
+  position
   scheduledIn {
     ... on ScheduledOperation {
       remoteTypeName: __typename

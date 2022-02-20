@@ -1,5 +1,6 @@
 require("dotenv").config()
 
+const { getFeeds } = require("./src/utils/feed")
 const locale = `${process.env.LOCALE.toLowerCase()}_${process.env.CULTURE.toUpperCase()}`
 const siteUrl = process.env.URL || `https://${process.env.HOST}`
 
@@ -71,6 +72,46 @@ module.exports = {
             icon: "fab fa-youtube",
           },
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: siteUrl,
+        sitemap: new URL("/sitemap-index.xml", siteUrl).href,
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: process.env.TITLE,
+        short_name: process.env.TITLE,
+        start_url: `/`,
+        background_color: process.env.COLOR_BACKGROUND,
+        theme_color: process.env.COLOR_PRIMARY,
+        display: `minimal-ui`,
+        icon: `static/icon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        generator: process.env.AUTHOR,
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: getFeeds(siteUrl, [locale]),
       },
     },
   ],

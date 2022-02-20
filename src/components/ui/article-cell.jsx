@@ -15,7 +15,7 @@ export default function ArticleCell({
     <article className="article-cell">
       <header>
         {cover && cover.localFile && (
-          <Link to={`/${slug}`} title={title}>
+          <Link to={`/${slug}`} title={title} className="wrapper">
             <GatsbyImage
               image={getImage(cover.localFile.childImageSharp)}
               alt={title}

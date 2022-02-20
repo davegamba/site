@@ -49,7 +49,7 @@ export default function Author({
           </div>
         </header>
       </section>
-      <div className="columns">
+      <div className={classNames("columns", "is-multiline")}>
         {nodes.map(node => (
           <div
             className={classNames("column", "is-one-third")}
