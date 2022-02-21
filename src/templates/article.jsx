@@ -22,6 +22,7 @@ export default function Article({
       published,
       formattedDate,
       excerpt,
+      readingTime: { minutes },
     },
     next,
     previous,
@@ -86,6 +87,11 @@ export default function Article({
       </header>
       {content.html && content.html && (
         <div className="container">
+          {minutes && (
+            <div className="reading-time">
+              Tempo di lettura: <span>{Math.round(minutes)}</span> minuti
+            </div>
+          )}
           <div
             className="content"
             dangerouslySetInnerHTML={{ __html: content.html }}
@@ -152,6 +158,9 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+      readingTime {
+        minutes
       }
     }
     next: graphCmsArticle(

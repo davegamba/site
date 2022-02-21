@@ -12,6 +12,11 @@
       background-color: rgba($primary-invert, 0.85);
       padding: $size-6;
       font-weight: 700;
+      white-space: pre-line;
+      i {
+        display: block;
+        font-size: $size-3;
+      }
     }
     &:hover {
       span {

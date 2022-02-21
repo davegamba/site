@@ -45,6 +45,17 @@
       }
     }
   }
+  .reading-time {
+    text-align: right;
+    padding: 0 $size-7;
+    margin-bottom: $size-3;
+    span {
+      background-color: $secondary;
+      display: inline-block;
+      padding: ($size-7 / 2) $size-7;
+      font-weight: 700;
+    }
+  }
   .content {
     padding: $size-7;
     iframe {

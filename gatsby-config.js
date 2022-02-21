@@ -114,5 +114,13 @@ module.exports = {
         feeds: getFeeds(siteUrl, [locale]),
       },
     },
+    {
+      resolve: `gatsby-plugin-readingtime`,
+      options: {
+        types: {
+          GraphCMS_Article: ({ content: { text } }) => text,
+        },
+      },
+    },
   ],
 }
