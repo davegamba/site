@@ -56,7 +56,9 @@ module.exports = {
     {
       resolve: `@pittica/gatsby-plugin-seo`,
       options: {
+        siteUrl,
         image: `/share.jpg`,
+        debug: true,
         socials: {
           instagram: {
             username: process.env.INSTAGRAM_USERNAME,

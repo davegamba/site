@@ -13,7 +13,7 @@ import ArticleAuthors from "../components/ui/article-authors"
 
 export default function Article({
   data: {
-    page: {
+    post: {
       title,
       cover,
       content,
@@ -21,7 +21,7 @@ export default function Article({
       authors,
       published,
       formattedDate,
-      excerpt,
+      description,
       readingTime: { minutes },
     },
     next,
@@ -39,7 +39,7 @@ export default function Article({
       <Seo
         location={location}
         title={title}
-        description={excerpt}
+        description={description}
         image={image}
         isBlogPost={true}
         author={
@@ -113,15 +113,15 @@ export const pageQuery = graphql`
     $next: String
     $previous: String
   ) {
-    page: graphCmsArticle(
+    post: graphCmsArticle(
       stage: { eq: $stage }
       id: { eq: $id }
       locale: { eq: $locale }
     ) {
       id
-      excerpt
       slug
       title
+      description: excerpt
       published
       formattedDate
       content {

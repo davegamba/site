@@ -5,13 +5,18 @@ import PageSection from "../components/ui/page-section"
 
 export default function Page({
   data: {
-    page: { title, sections },
+    post: { title, description, sections },
   },
   location,
 }) {
   return (
     <div>
-      <Seo location={location} title={title} isBlogPost={false} />
+      <Seo
+        location={location}
+        title={title}
+        description={description}
+        isBlogPost={false}
+      />
       {sections.map((section, i) => (
         <PageSection key={`section-${i}`} node={section} />
       ))}
@@ -21,11 +26,11 @@ export default function Page({
 
 export const pageQuery = graphql`
   query PageTemplate($slug: String!) {
-    page: graphCmsPage(slug: { eq: $slug }, stage: { eq: PUBLISHED }) {
+    post: graphCmsPage(slug: { eq: $slug }, stage: { eq: PUBLISHED }) {
       title
       sections {
         title
-        subtitle
+        description: subtitle
         fullscreen
         content {
           html

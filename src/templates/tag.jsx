@@ -8,7 +8,7 @@ import ListPagination from "../components/ui/list-pagination"
 
 export default function Category({
   data: {
-    tag: { name },
+    post: { title },
     articles: { nodes },
   },
   location,
@@ -16,10 +16,10 @@ export default function Category({
 }) {
   return (
     <div className="container">
-      <Seo location={location} title={name} isBlogPost={false} />
+      <Seo location={location} title={title} isBlogPost={false} />
       <section className="section">
         <header className="header">
-          <h1 className="title">{name}</h1>
+          <h1 className="title">{title}</h1>
         </header>
       </section>
       <div className={classNames("columns", "is-multiline")}>
@@ -45,13 +45,13 @@ export const pageQuery = graphql`
     $locale: GraphCMS_Locale
     $stage: GraphCMS_Stage
   ) {
-    tag: graphCmsTag(
+    post: graphCmsTag(
       stage: { eq: $stage }
       id: { eq: $id }
       locale: { eq: $locale }
     ) {
       id
-      name
+      title: name
     }
     articles: allGraphCmsArticle(
       limit: $limit
