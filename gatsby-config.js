@@ -59,6 +59,7 @@ module.exports = {
         siteUrl,
         image: `/share.jpg`,
         debug: true,
+        title: process.env.TITLE,
         socials: {
           instagram: {
             username: process.env.INSTAGRAM_USERNAME,

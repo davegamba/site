@@ -30,9 +30,9 @@ export default function PageSection({ node }) {
       style={style}
     >
       <div className="container">
-        <h3 className={classNames("title", "has-text-centered")}>
+        <h2 className={classNames("title", "has-text-centered")}>
           {node.title}
-        </h3>
+        </h2>
         <h4 className={classNames("subtitle", "has-text-centered")}>
           {node.subtitle}
         </h4>

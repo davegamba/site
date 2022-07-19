@@ -8,6 +8,7 @@ import getCoverFallback from "../../utils/get-cover-fallback"
 import "../../scss/components/ui/_article-navigation.scss"
 
 export default function ArticlePagination({ next, previous }) {
+  console.log(next)
   if (next || previous) {
     return (
       <section className={classNames("section", "article-navigation")}>

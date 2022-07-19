@@ -49,22 +49,21 @@ export const pageQuery = graphql`
           title
           subtitle
           link {
-            ... on GraphCMS_Article {
-              title
-              path
-              url
-              remoteTypeName
-            }
-            ... on GraphCMS_Page {
-              title
-              path
-              url
-              remoteTypeName
-            }
-            ... on GraphCMS_Link {
-              title
-              url
-              remoteTypeName
+            title
+            url
+            page {
+              ... on GraphCMS_Article {
+                title
+                path
+                url
+                remoteTypeName
+              }
+              ... on GraphCMS_Page {
+                title
+                path
+                url
+                remoteTypeName
+              }
             }
           }
         }
