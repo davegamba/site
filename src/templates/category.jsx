@@ -45,7 +45,7 @@ export const pageQuery = graphql`
     $locale: GraphCMS_Locale
     $stage: GraphCMS_Stage
   ) {
-    category: graphCmsCategory(
+    post: graphCmsCategory(
       stage: { eq: $stage }
       id: { eq: $id }
       locale: { eq: $locale }
